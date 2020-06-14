@@ -15,6 +15,10 @@ class ProductsController < ApplicationController
       flash[:error] = '追加に失敗しました。'
       render :new
     end
+
+    def show 
+      @product = Product.find(params[:id])
+    end
   
     private
     def product_params

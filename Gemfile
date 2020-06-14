@@ -60,3 +60,6 @@ gem 'devise'
 
 #画像アップロード
 gem 'carrierwave', '~> 1.0'
+
+#id ハッシュ化
+gem 'hashid-rails', '~> 1.0'
