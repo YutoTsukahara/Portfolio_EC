@@ -1,2 +1,10 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<%= @products.each do |product| %>
+  <%= link_to product_path(product) do %>
+    <div>
+      <%= image_tag product.image.url %>
+      <p><%= product.name %></p>
+      <p><%= product.price.to_s(:delimited) %>円</p>
+      <hr/>
+    </div>
+  <% end %>
+<% end %>
