@@ -1,0 +1,10 @@
+<h3>
+  買い物かごの中身
+</h3>
+<ul>
+  <% @products.each do |product| %>
+     <li><%= product.name %></li>
+    <li><%= product.price %> 円</li>
+    <li><%= link_to"✖", product_delete_in_baskets_path(product), method: :post%></li>
+  <% end %>
+</ul>
