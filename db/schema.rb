@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_120714) do
+ActiveRecord::Schema.define(version: 2020_06_15_150832) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2020_06_13_120714) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "baskets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_baskets_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -53,5 +60,6 @@ ActiveRecord::Schema.define(version: 2020_06_13_120714) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "baskets", "users"
   add_foreign_key "products", "admins"
 end
