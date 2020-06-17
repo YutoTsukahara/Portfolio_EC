@@ -4,4 +4,5 @@ class BasketsController < ApplicationController
   def show 
     basket = current_user.prepare_basket
     @products = basket.products
+    @total_price = basket.product.sum(:price)
   end
