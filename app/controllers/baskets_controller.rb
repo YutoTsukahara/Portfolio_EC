@@ -6,3 +6,4 @@ class BasketsController < ApplicationController
     @products = basket.products
     @total_price = basket.product.sum(:price)
   end
+end
