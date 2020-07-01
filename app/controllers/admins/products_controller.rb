@@ -5,7 +5,7 @@ class Admins::ProductsController < Admins::ApplicationController
   end
 
   def create 
-    @product = Product.current_admin.products.build(product_params)
+    @product = current_admin.products.build(product_params)
     if @product.save
       redirect_to root_path, notice: '商品を追加しました。'
     else

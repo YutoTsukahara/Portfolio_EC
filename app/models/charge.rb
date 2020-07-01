@@ -5,7 +5,7 @@ class Charge
 
   def create!(price, token)
     Stripe::Charge.create({
-      amount: total,
+      amount: price,
       currency: 'jpy',
       description: 'Example charge',
       source: token

@@ -1,7 +1,11 @@
-<%= image_tag @product.image.url %>
-<p><%= @product.name %></p>
-<p><%= @product.price %></p>
-<p><%= @product.description %></p>
-<%= link_to product_add_to_baskets_path(@product), method: :post do %>
-  <div class="btn btn-large">買い物かごに入れる</div>
-<% end %>
+<div class="row mt-20">
+  <div class="col-md-6"><%= image_tag @product.image.url %></div>
+  <div class="col-md-6">
+    <p><%= @product.name %></p>
+    <p><%= @product.price %></p>
+    <p><%= @product.description %></p>
+    <%= link_to product_add_to_baskets_path(@product), method: :post do %>
+      <div class="btn btn-dark">買い物かごに入れる</div>
+    <% end %>
+  </div>
+</div>

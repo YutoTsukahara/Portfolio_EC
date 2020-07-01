@@ -1,1 +1,9 @@
 <h1>Dashboard</h1>
+<ul>
+  <li>売り上げ累計 <%= current_admin.total_sales.to_s(:delimited) %> 円</li>
+  <%= link_to '詳細', admins_sales_record_path %>
+  <li>今月の売り上げ <%= current_admin.this_month_sales.to_s(:delimited) %> 円</li>
+  <%= link_to '詳細', admins_sales_record_path(start_at: Time.current.beginning_of_month, end_at: Time.current.end_of_month) %>
+  <li>今日の売り上げ <%= current_admin.today_sales.to_s(:delimited) %> 円</li>
+  <%= link_to '詳細', admins_sales_record_path(start_at: Time.current.beginning_of_day, end_at: Time.current.end_of_day) %>
+</ul>
