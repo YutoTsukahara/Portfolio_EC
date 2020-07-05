@@ -7,6 +7,9 @@ class User < ApplicationRecord
   
   has_one :basket, dependent: :destroy
   has_one :purchase_record, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :products, through: :favorites
+ 
 
   def prepare_basket
     basket || create_basket
@@ -15,6 +18,11 @@ class User < ApplicationRecord
  def prepare_purchase_record
    purchase_record || create_purchase_record
  end
+
+def already_favorited?(product)
+  self.favorites.exists?(product_id: product.id)
+end
+
 
   def checkout!(token, product_ids:)
     total = basket.total_price(product_ids: product_ids)
