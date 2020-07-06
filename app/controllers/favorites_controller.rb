@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
   
   def show 
    @favorite = current_user.favorite_products
