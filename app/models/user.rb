@@ -8,7 +8,9 @@ class User < ApplicationRecord
   has_one :basket, dependent: :destroy
   has_one :purchase_record, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :products, through: :favorites
+  has_many :favorite_products, through: :favorites, source: :product
+  
+  
  
 
   def prepare_basket

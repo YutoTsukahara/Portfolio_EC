@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root to: "products#index"
   resource :basket, only: %i(show)
   resource :charge, only: %i(create)
+  resource :favorite, only: %i(show)
   resources :products, only: %i(show) do 
     resource :favorites, only: %i(create destroy)
     scope module: :products do
