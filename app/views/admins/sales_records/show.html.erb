@@ -1,11 +1,12 @@
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>価格</th>
-      <th>売り上げ日</th>
-    </tr>
-  </thead>
+<h1 class="mb-4">Sales details</h1>
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr> 
+        <th>Item name</th>
+        <th>Price</th>
+        <th>Sales day</th>
+      </tr>
+    </thead>
   <tbody>
     <% @purchase_record_products.each do |purchase_record_product| %>
       <% product = purchase_record_product.product %>
@@ -23,3 +24,9 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="fix">
+ <%= link_to  admins_root_path do %>
+      <p class="btn btn-dark">Back Home</p>
+   <% end %>
+</div>

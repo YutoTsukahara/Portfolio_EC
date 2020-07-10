@@ -1,11 +1,20 @@
-<% @products.each do |product| %>
-  <%= link_to product_path(product) do %>
-    <div>
-      <%= image_tag product.image.url %>
-      <p><%= product.name %></p>
-      <p><%= product.price.to_s(:delimited) %>円</p>
-      <hr/>
+<h1 class="mb-4">All items</h1>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-4">
+      <div class="bg-light p-2 mt-2">
+        <div class="appeal">
+          <%= link_to product_path(product) do %>
+              <%= image_tag product.image.url, :width => '90%', :height => 'auto' %>
+            <div class="mask">
+              <div class="caption">Click it and see the item details.</div>
+            </div>
+          <% end %>
+      </div>
+        <p class="h4 pl-3"><%= product.name %></p>
+        <p class="h5 pl-3"><%= product.price.to_s(:delimited) %>円</p>
+      </div>
     </div>
   <% end %>
+ </div>
  
-<% end %>

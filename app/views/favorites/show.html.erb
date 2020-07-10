@@ -1,22 +1,43 @@
-<h3>お気に入りに追加した商品</h3>
+<h1 class="mb-4">Your favorite item</h1>
   <% if @favorite.empty? %>
-   <p>お気に入りに追加した商品はありません。</p>
+   <p class="h3">お気に入りに追加した商品はありません。</p>
   <% end %>
 
-<% current_user.favorite_products.each do |product| %>
-    <%= image_tag product.image.url %>
-    <%= product.name %>
-    <%= product.price %>
-    <%= link_to product_path(product) do %>
-      <p>商品詳細</p>
+  <% current_user.favorite_products.each do |product| %>
+    <div class="row border-bottom">
+      
+        <div class="col-md-4 my-2">  
+          <%= image_tag product.image.url, :width => '180px', :height => 'auto' %>
+        </div>
+        <div class="col-md-2">
+          <p class="h2 mt-4"><%= product.name %></p>
+        </div>
+        <div class="col-md-2">
+          <p class="h2 mt-4"><%= product.price %> 円</p>
+        </div>
+        <div class="col-md-2  mt-4">
+          <% if current_user.already_favorited?(product) %>
+              <%= link_to  product_favorites_path(product), method: :delete do %>
+                <i class="fas fa-2x fa-heart red_heart"></i>
+              <% end %>
+          <% else %>
+              <%= link_to product_favorites_path(product), method: :post do %>
+                <i class="far fa-2x fa-heart red_heart"></i>
+              <% end %>
+          <% end %>
+        </div>
+       <div class="col-md-2 mt-4">
+          <%= link_to product_path(product) do %>
+            <p class="btn btn-primary">商品詳細</p>
+          <% end %>
+       </div>
+    
+    </div>
+  <% end %>
+
+  <div class="fix">
+    <%= link_to root_path do %>
+        <p class="btn btn-dark mt-3">Back Home</p>
     <% end %>
-    <% if current_user.already_favorited?(product) %>
-        <%= link_to  product_favorites_path(product), method: :delete do %>
-          <i class="fas fa-heart"></i>
-        <% end %>
-    <% else %>
-        <%= link_to product_favorites_path(product), method: :post do %>
-          <i class="far fa-heart"></i>
-        <% end %>
-    <% end %>
-<% end %>
+  </div>
+

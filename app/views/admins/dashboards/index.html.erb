@@ -1,9 +1,63 @@
-<h1>Dashboard</h1>
-<ul>
-  <li>売り上げ累計 <%= current_admin.total_sales.to_s(:delimited) %> 円</li>
-  <%= link_to '詳細', admins_sales_record_path %>
-  <li>今月の売り上げ <%= current_admin.this_month_sales.to_s(:delimited) %> 円</li>
-  <%= link_to '詳細', admins_sales_record_path(start_at: Time.current.beginning_of_month, end_at: Time.current.end_of_month) %>
-  <li>今日の売り上げ <%= current_admin.today_sales.to_s(:delimited) %> 円</li>
-  <%= link_to '詳細', admins_sales_record_path(start_at: Time.current.beginning_of_day, end_at: Time.current.end_of_day) %>
-</ul>
+<h1 class="mb-4">Dashboard</h1>
+
+ <div class="row border rounded mb-2">
+  <div class="col-md-5 mt-4">
+    <h2>Total sales</h2>    
+  </div>
+  <div class="col-md-5 mt-4">
+    <p class="h2"> <%= current_admin.total_sales.to_s(:delimited) %> 円</p>
+   </div>
+  <div class="col-md-2 mt-4">
+    <%= link_to admins_sales_record_path do %>
+      <p class="btn btn-dark">売上詳細<p>
+    <% end %>
+  </div>
+ </div>
+
+
+ <div class="row border rounded mb-2">
+   <div class="col-md-5 mt-4">
+    <h2>Sales of this month</h2> 
+   </div>
+
+   <div class="col-md-5 mt-4">
+    <p class="h2"><%= current_admin.this_month_sales.to_s(:delimited) %> 円</p>
+   </div>
+   
+   <div class="col-md-2 mt-4">
+    <%= link_to admins_sales_record_path(start_at: Time.current.beginning_of_month, end_at: Time.current.end_of_month) do %>
+      <p class="btn btn-dark">売上詳細<p>
+    <% end %>
+   </div>
+  </div>
+
+
+  <div class="row border rounded mb-2">
+    <div class="col-md-5 mt-4">
+      <h2>Today's sales</h2> 
+    </div>
+
+    <div class="col-md-5 mt-4">
+    <p class="h2"><%= current_admin.today_sales.to_s(:delimited) %> 円</p>
+   </div>
+
+    <div class="col-md-2 mt-4">
+      <%= link_to admins_sales_record_path(start_at: Time.current.beginning_of_day, end_at: Time.current.end_of_day) do %>
+      <p class="btn btn-dark">売上詳細<p>
+    <% end %>
+    </div>
+  </div>
+
+<div class="row mb-2">
+ <div class="col-md-11 mt-4 text-center">
+  <%= link_to new_admins_product_path do %>
+      <p class="btn btn-primary w-75">新しい商品を追加する</p>
+  <% end %>
+ </div>
+
+ <div class="col-md-1 mt-4">
+  <%= link_to destroy_admin_session_path, method: :delete do %>
+    <p class="btn btn-secondary">Logout</p>
+  <% end %>
+ </div>
+</div>

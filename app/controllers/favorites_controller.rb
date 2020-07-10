@@ -9,15 +9,14 @@ class FavoritesController < ApplicationController
    @product = Product.find(params[:product_id])
    @favorite = current_user.favorites.create(product_id: @product.id)
    redirect_back(fallback_location: root_path)
-   #  redirect_to product_path id: params[:product_id]
+   
   end
 
   def destroy
     @product = Product.find(params[:product_id])
     @favorite = current_user.favorites.find_by(product_id: @product.id)
     @favorite.destroy
-    redirect_back(fallback_location: root_path)
-    # redirect_to product_path id: params[:product_id]
+     redirect_back(fallback_location: root_path)
   end
 
 end

@@ -1,6 +1,6 @@
-<div class="border p-5 m-4"> 
+<div class="border p-4 m-3"> 
   <div class="pb-4">
-    <h1>Product New</h1>
+    <h1>Add new item</h1>
   </div>
   <%= form_for [:admins, @product] do |f| %>
     <div class="form-group">
@@ -23,7 +23,13 @@
     <%= f.file_field :image, accept:"image/jpg,image/jpeg,image/png", class:"form-control-file" %>
     </div>
 
-
-    <%= f.submit "Add product", class:"btn btn-dark" %>
+  
+    <%= f.submit "Add new item", class:"btn btn-primary" %>
   <% end %>
 </div>
+
+  <div class="text-right">
+    <%= link_to  admins_root_path do %>
+        <p class="btn btn-dark">Back Home</p>
+    <% end %>
+  </div>

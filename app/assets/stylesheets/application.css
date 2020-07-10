@@ -1,15 +1,52 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+html {
+  margin: 20px;
+}
+
+#product-show p {
+   overflow-wrap: break-word;
+   padding-bottom: 20px;
+ }
+
+ .appeal {
+  width:			100%;
+	height:			100%;
+	overflow:		hidden;
+	margin:			10px 8px 10px 16px;
+	position:		relative;
+ }
+
+ .appeal .caption {
+	font-size:		130%;
+	color:			#fff;
+	padding-top:		80px;
+	padding-left:		0px;
+}
+
+.appeal .mask {
+	width:			90%;
+	height:			100%;
+	position:		absolute;
+	top:			0;
+	left:			0;
+	opacity:		0;	
+	background-color:	rgba(0,0,0,0.4);
+	-webkit-transition:	all 0.6s ease;
+	transition:		all 0.6s ease;
+}
+
+.appeal:hover .mask {
+	opacity:		1;
+	padding-left:		30px;	
+}
+
+ .fix {
+  position: fixed;
+  bottom: 10px; 
+  right: 10px;
+  padding: 6px 40px;
+}
+
+.red_heart {
+  color: red;
+}
+ 

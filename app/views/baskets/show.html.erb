@@ -1,25 +1,45 @@
-<h3>
-  買い物かごの中身
-</h3>
-<ul>
-  <% @products.each do |product| %>
-     <li><%= product.name %></li>
-    <li><%= product.price %> 円</li>
-    <li><%= link_to"✖", product_delete_in_baskets_path(product), method: :post%></li>
-  <% end %>
-</ul>
-<div>合計金額<%= @total_price %> 円</div>
+<h1 class="mb-4">Shopping Basket</h1>
 
-<%= form_tag charge_path do %>
-  <% @products.each do |p| %>
-    <%= hidden_field_tag 'product_ids[]', p.id %>
+  <% @products.each do |product| %>
+    <div class="row border-bottom">
+      
+        <div class="col-md-4 my-2">
+          <%= image_tag product.image.url, :width => '180px', :height => 'auto' %>
+        </div>
+        <div class="col-md-2">
+          <p class="h2 mt-4"><%= product.name %></p>
+        </div>  
+        <div class="col-md-2">
+          <p class="h2 mt-4"><%= product.price %> 円</p>
+        </div>
+        <div class="col-md-2  mt-4">
+          <%= link_to product_delete_in_baskets_path(product), method: :post do %>
+           <i class="fas fa-2x fa-trash-alt"></i>
+          <% end %>
+        </div>
+      </div>
   <% end %>
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%=  ENV['STRIPE_API_KEY'] %>"
-          data-description="商品のご購入"
-          data-amount=<%= @total_price %>
-          data-locale="auto"
-          data-currency="jpy">
-</script>
-<% end %>
+
+
+<div class="fix ">
+  <div class="bg-light p-2 rounded">
+    <%= form_tag charge_path do %>
+      <% @products.each do |p| %>
+        <%= hidden_field_tag 'product_ids[]', p.id %>
+      <% end %>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%=  ENV['STRIPE_API_KEY'] %>"
+              data-description="商品のご購入"
+              data-amount=<%= @total_price %>
+              data-locale="auto"
+              data-currency="jpy">
+      </script>
+    <% end %>
+    <p class="pt-2">ご注文小計 :  <span class="text-danger h4"><%= @total_price %> 円</span></p>
+  </div>
+
+   <%= link_to root_path do %>
+      <p class="btn btn-dark mt-3 w-100">買い物を続ける</p>
+   <% end %>
+</div>
 
