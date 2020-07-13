@@ -7,7 +7,7 @@ class Admins::ProductsController < Admins::ApplicationController
   def create 
     @product = current_admin.products.build(product_params)
     if @product.save
-      redirect_to root_path, notice: '商品を追加しました。'
+      redirect_to admins_root_path, success: '商品を追加しました。'
     else
       flash[:error] = '追加に失敗しました。'
       render :new

@@ -1,3 +1,9 @@
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <div class="border p-4 m-3"> 
   <div class="pb-4">
     <h1>Add new item</h1>

@@ -68,3 +68,5 @@ gem 'hashid-rails', '~> 1.0'
 
 # 決済サービス
 gem 'stripe'
+
+gem 'kaminari'

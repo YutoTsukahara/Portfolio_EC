@@ -1,3 +1,9 @@
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+  
 <h1 class="mb-4">All items</h1>
 <div class="row">
   <% @products.each do |product| %>
@@ -17,4 +23,6 @@
     </div>
   <% end %>
  </div>
+
+ <%= paginate @products %>
  

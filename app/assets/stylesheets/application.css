@@ -2,6 +2,17 @@ html {
   margin: 20px;
 }
 
+.nav-item > li {
+	padding-top: 8px;
+}
+
+.nav-item > p {
+	color: white;
+	margin-right: 30px;
+	padding-top: 8px;
+	
+}
+
 #product-show p {
    overflow-wrap: break-word;
    padding-bottom: 20px;
@@ -50,3 +61,15 @@ html {
   color: red;
 }
  
+.page, .first, .prev, .next, .last {
+	margin:1px;
+	padding: 8px;
+	border: 1px lightgray solid;
+	border-radius: 15%;
+}
+
+.pagination {
+	margin-top: 50px;
+  justify-content: center;
+}
+
