@@ -56,6 +56,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'dotenv-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -74,3 +75,4 @@ gem 'hashid-rails', '~> 1.0'
 gem 'stripe'
 
 gem 'kaminari'
+
