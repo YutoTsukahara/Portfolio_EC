@@ -28,7 +28,7 @@
         <%= hidden_field_tag 'product_ids[]', p.id %>
       <% end %>
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= ENV['stripeAPI'] %>"
+              data-key=<%= ENV['STRIPE_API_KEY'] %>
               data-description="商品のご購入"
               data-amount=<%= @total_price %>
               data-locale="auto"
