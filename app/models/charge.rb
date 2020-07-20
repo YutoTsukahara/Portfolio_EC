@@ -1,6 +1,6 @@
 class Charge 
   def initialize
-    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+     Stripe.api_key = ENV['stripeSEC']
   end
 
   def create!(price, token)
